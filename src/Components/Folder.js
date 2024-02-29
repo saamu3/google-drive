@@ -27,7 +27,7 @@ export default function Folder({ val}) {
     setFolderId(id);
     setName(name);
   };
-  console.log("folder id is",folderId)
+  // console.log("folder id is",folderId)
 
   const handleRename = (val, newName) => {
      console.log("folder id and name",val,newName)
