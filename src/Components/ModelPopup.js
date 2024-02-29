@@ -8,7 +8,6 @@ export default function ModelPopup({
   folderId=null,
   name=null,
 }) {
-  const popUp = useContext(popUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
       <div class="folder-card">
