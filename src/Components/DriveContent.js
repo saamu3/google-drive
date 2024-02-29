@@ -11,9 +11,7 @@ export default function DriveContent({}) {
         <div className="folders-container">
           {folder.folderItems.map((val) => {
             return (
-              <>
                 <Folder val={val} />
-              </>
             );
           })}
         </div>
