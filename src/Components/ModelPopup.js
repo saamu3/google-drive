@@ -5,17 +5,14 @@ export default function ModelPopup({
   handleButtonAction,
   header,
   buttonTitle,
-  folderId,
-  name,
+  folderId=null,
+  name=null,
 }) {
-  // console.log("folder id is",folderId)
   const popUp = useContext(popUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
-    <>
       <div class="folder-card">
         <h2>{header}</h2>
-        <br />
         <input
           className="folder-input"
           type="text"
@@ -37,7 +34,6 @@ export default function ModelPopup({
           <button
             className="create-button"
             onClick={() => {
-              // console.log("folder id is",folderId)
               folderId
                 ? handleButtonAction(folderId, folderName)
                 : handleButtonAction(folderName);
@@ -47,6 +43,5 @@ export default function ModelPopup({
           </button>
         </div>
       </div>
-    </>
   );
 }
