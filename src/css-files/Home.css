@@ -1,0 +1,10 @@
+.main-container{
+    width: 100vw;
+    max-Height: 100vh;
+    display: flex;
+    flex-Direction: row;
+}
+.inner-container{
+    display: flex;
+    flex-Direction: column;
+}
