@@ -1,12 +1,12 @@
 import "../css-files/SideBar.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import ModelPopup from "./ModelPopup";
 import { folderItemsContext } from "./Home";
 import { popUpContext } from "./Home";
 export default function SideBar() {
-  const folder = useContext(folderItemsContext)
-  const popUp = useContext(popUpContext)
+  const folder = useContext(folderItemsContext);
+  const popUp = useContext(popUpContext);
 
   const handleCreate = (newName) => {
     folder.setFolderItems([
@@ -35,11 +35,9 @@ export default function SideBar() {
 
         {popUp.isPopUpOpen == "create" && (
           <ModelPopup
-            handleButtonAction={handleCreate}//handleAction
+            handleButtonAction={handleCreate}
             header="create folder"
-            buttonTitle="Create"//buttonTitle
-            folderId={null}
-            name={null}
+            buttonTitle="Create"
           />
         )}
       </div>
