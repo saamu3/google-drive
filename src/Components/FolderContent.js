@@ -43,12 +43,10 @@ export default function FolderContent() {
           {fileItem.map((val) => {
             if (val.folder_id == id) {
               return (
-                <>
                   <div className="file-container">
                     <FontAwesomeIcon icon={faFile} className="file-icon" />
                     <h1 className="file-heading">{val.name}</h1>
                   </div>
-                </>
               );
             }
           })}
