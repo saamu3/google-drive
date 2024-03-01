@@ -9,9 +9,9 @@ export default function DriveContent({}) {
     <>
       <div className="content-container">
         <div className="folders-container">
-          {folder.folderItems.map((val) => {
+          {folder.folderItems.map((val,index) => {
             return (
-                <Folder val={val} />
+                <Folder key={index} val={val} />
             );
           })}
         </div>
