@@ -8,7 +8,6 @@ const folderItemsContext = createContext();
 const popUpContext = createContext();
 
 export default function Home() {
-   
   const folders = JSON.parse(localStorage.getItem("folderItems")) || FolderData;
   const [folderItems, setFolderItems] = useState(folders);
   const [isPopUpOpen, setIsPopUpOpen] = useState(null);
