@@ -8,6 +8,7 @@ export default function ModelPopup({
   folderId=null,
   name=null,
 }) {
+  const popUp = useContext(popUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
       <div class="folder-card">
@@ -18,7 +19,7 @@ export default function ModelPopup({
           onChange={(event) => {
             setFolderName(event.target.value);
           }}
-          defaultValue={popUp.isOpenUp == "rename" ? name : folderName}
+          defaultValue={folderId ? name: folderName}
         />
         <div className="folder-buttons-container">
           <button
