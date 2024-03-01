@@ -2,6 +2,8 @@ import {
   faEllipsisVertical,
   faFolder,
 } from "@fortawesome/free-solid-svg-icons";
+import {v4 as uuidv4} from 'uuid';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,18 +21,18 @@ export default function Folder({ val}) {
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState(null);
+  const [folderId, setFolderId] = useState("");
   const [name, setName] = useState(null);
 
   const handleShow = (id, name) => {
-    setFolderId(null)
     setFolderId(id);
     setName(name);
   };
-  // console.log("folder id is",folderId)
+
+   // console.log("folder id is", folderId);
 
   const handleRename = (val, newName) => {
-     console.log("folder id and name",val,newName)
+      console.log("folder id and name", newName,val)
     const updatedList = folder.folderItems.map((item) => {
       if (item.id == val)
         return {
@@ -39,6 +41,7 @@ export default function Folder({ val}) {
         };
       return item;
     });
+    
   //  console.log("updates lists",updatedList)
 
      
@@ -54,8 +57,9 @@ export default function Folder({ val}) {
 
   useEffect(() => {
     localStorage.setItem("folderItems", JSON.stringify(folder.folderItems));
-  }, [folder.folderItems]);
+  }, [folder.folderItems])
 
+//  console.log("folder id ",folderId)
   return (
     <div className="folder-div">
       <FontAwesomeIcon className="folder-icon" icon={faFolder} />
@@ -80,10 +84,11 @@ export default function Folder({ val}) {
           folderId={folderId}
           setIsDropdownOpen={setIsDropdownOpen}
           buttonTitle={["Rename Folder", "Delete Folder"]}
-          handleDelete={handleDelete}
+          handleDelete={handleDelete}          
         />
       )}
-
+    
+       
       {popUp.isPopUpOpen =="rename" && ( 
         <ModelPopup
           handleButtonAction={handleRename}
