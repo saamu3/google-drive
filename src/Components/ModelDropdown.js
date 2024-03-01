@@ -15,7 +15,7 @@ function ModelDropdown({
           <button
             id={folderId}
             className="newfolder-style"
-            onClick={(e) => {
+            onClick={() => {
               popUp.setIsPopUpOpen("rename");
               setIsDropdownOpen(false);
             }}
