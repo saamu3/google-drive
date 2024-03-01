@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import  "../css-files/FolderContent.css";
+import "../css-files/FolderContent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
-import fileData from "./FilesData";
-import FolderData from "./FolderData";
+import fileData from "../StaticData/FilesData";
+import FolderData from "../StaticData/FolderData";
 import { useParams } from "react-router-dom";
 
 export default function FolderContent() {
@@ -43,10 +43,10 @@ export default function FolderContent() {
           {fileItem.map((val) => {
             if (val.folder_id == id) {
               return (
-                  <div className="file-container">
-                    <FontAwesomeIcon icon={faFile} className="file-icon" />
-                    <h1 className="file-heading">{val.name}</h1>
-                  </div>
+                <div className="file-container">
+                  <FontAwesomeIcon icon={faFile} className="file-icon" />
+                  <h1 className="file-heading">{val.name}</h1>
+                </div>
               );
             }
           })}
