@@ -8,7 +8,7 @@ export default function ModelPopup({
   folderId=null,
   name=null,
 }) {
-  console.log("br fvb urnrvn",folderId,name);
+  // console.log("br fvb urnrvn",folderId,name);
   const popUp = useContext(popUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
@@ -35,6 +35,7 @@ export default function ModelPopup({
           <button
             className="create-button"
             onClick={() => {
+              console.log("folder info",folderId, folderName)
               folderId
                 ? handleButtonAction(folderId, folderName)
                 : handleButtonAction(folderName);
