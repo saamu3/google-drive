@@ -2,7 +2,7 @@ import {
   faEllipsisVertical,
   faFolder,
 } from "@fortawesome/free-solid-svg-icons";
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
@@ -13,26 +13,24 @@ import ModelPopup from "./ModelPopup";
 import { folderItemsContext } from "./Home";
 import { popUpContext } from "./Home";
 
-export default function Folder({ val}) {
-  const folder = useContext(folderItemsContext)
-  const popUp = useContext(popUpContext)
-  
+export default function Folder({ val }) {
+  const folder = useContext(folderItemsContext);
+  const popUp = useContext(popUpContext);
 
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState("");
-  const [name, setName] = useState(null);
+  const [folderId, setFolderId] = useState({ id: null, name: null });
 
-  const handleShow = (id, name) => {
-    setFolderId(id);
-    setName(name);
-  };
+  // const handleShow = (id, name) => {
+  //   setFolderId(id);
+  //   setName(name);
+  // };
 
-   // console.log("folder id is", folderId);
+  // console.log("folder id is", folderId);
 
   const handleRename = (val, newName) => {
-      console.log("folder id and name", newName,val)
+    console.log("folder id and name", newName, val);
     const updatedList = folder.folderItems.map((item) => {
       if (item.id == val)
         return {
@@ -41,12 +39,9 @@ export default function Folder({ val}) {
         };
       return item;
     });
-    
-  //  console.log("updates lists",updatedList)
 
-     
+    console.log("updates lists", updatedList);
     folder.setFolderItems(updatedList);
-    
     popUp.setIsPopUpOpen(null);
   };
 
@@ -57,9 +52,9 @@ export default function Folder({ val}) {
 
   useEffect(() => {
     localStorage.setItem("folderItems", JSON.stringify(folder.folderItems));
-  }, [folder.folderItems])
+  }, [folder.folderItems]);
 
-//  console.log("folder id ",folderId)
+  //  console.log("folder id ",folderId)
   return (
     <div className="folder-div">
       <FontAwesomeIcon className="folder-icon" icon={faFolder} />
@@ -67,35 +62,34 @@ export default function Folder({ val}) {
         onClick={() => {
           navigate(`/folderContent/${val.id}`);
         }}
-        >
+      >
         {val.name}
       </h1>
       <FontAwesomeIcon
         id={val.id}
         onClick={() => {
           setIsDropdownOpen(true);
-          handleShow(val.id, val.name);
+          setFolderId({ id: val.id, name: val.name });
         }}
         style={{ margingLeft: "30px", backgroundColor: "red" }}
         icon={faEllipsisVertical}
       />
       {isDropdownOpen && (
         <ModelDropdown
-          folderId={folderId}
+          folderId={folderId.id}
           setIsDropdownOpen={setIsDropdownOpen}
           buttonTitle={["Rename Folder", "Delete Folder"]}
-          handleDelete={handleDelete}          
+          handleDelete={handleDelete}
         />
       )}
-    
-       
-      {popUp.isPopUpOpen =="rename" && ( 
+
+      {popUp.isPopUpOpen == "rename" && (
         <ModelPopup
           handleButtonAction={handleRename}
           header="Rename Folder"
           buttonTitle="rename"
-          folderId={folderId}
-          name={name}
+          folderId={folderId.id}
+          name={folderId.name}
         />
       )}
     </div>
