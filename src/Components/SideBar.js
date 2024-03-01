@@ -1,5 +1,6 @@
 import "../css-files/SideBar.css";
 import { useContext } from "react";
+import {v4 as uuidv4} from 'uuid';
 
 import ModelPopup from "./ModelPopup";
 import { folderItemsContext } from "./Home";
@@ -11,7 +12,7 @@ export default function SideBar() {
   const handleCreate = (newName) => {
     folder.setFolderItems([
       ...folder.folderItems,
-      { id: folder.folderItems.length + 1, name: newName },
+      { id: uuidv4(), name: newName },
     ]);
     popUp.setIsPopUpOpen(null);
   };
