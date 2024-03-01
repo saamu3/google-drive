@@ -24,7 +24,7 @@ export default function Folder({ val }) {
 
 
   const handleRename = (val, newName) => {
-    console.log("folder id and name", newName, val);
+    // console.log("folder id and name", newName, val);
     const updatedList = folder.folderItems.map((item) => {
       if (item.id == val)
         return {
@@ -47,6 +47,8 @@ export default function Folder({ val }) {
   useEffect(() => {
     localStorage.setItem("folderItems", JSON.stringify(folder.folderItems));
   }, [folder.folderItems]);
+
+  console.log("popup", folderId)
 
   //  console.log("folder id ",folderId)
   return (
