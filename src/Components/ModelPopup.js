@@ -8,10 +8,11 @@ export default function ModelPopup({
   folderId=null,
   name=null,
 }) {
+  console.log("br fvb urnrvn",folderId,name);
   const popUp = useContext(popUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
-      <div class="folder-card">
+      <div className="folder-card">
         <h2>{header}</h2>
         <input
           className="folder-input"
