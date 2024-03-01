@@ -22,12 +22,6 @@ export default function Folder({ val }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [folderId, setFolderId] = useState({ id: null, name: null });
 
-  // const handleShow = (id, name) => {
-  //   setFolderId(id);
-  //   setName(name);
-  // };
-
-  // console.log("folder id is", folderId);
 
   const handleRename = (val, newName) => {
     console.log("folder id and name", newName, val);
