@@ -1,23 +1,22 @@
 import { useContext } from "react";
-import  "../css-files/ModelDropdown.css";
+import "../css-files/ModelDropdown.css";
 import { popUpContext } from "./Home";
 function ModelDropdown({
   folderId,
   setIsDropdownOpen,
   buttonTitle,
   handleDelete,
-}) 
-  {
-  const popUp = useContext(popUpContext)
-  console.log("pop is",popUp);
+}) {
+  const popUp = useContext(popUpContext);
   return (
     <div className="drop1-container">
       <ul className="unordered-list-style">
         <li className="list-style">
           <button
+            id={folderId}
             className="newfolder-style"
-            onClick={() => {
-             popUp.setIsPopUpOpen("rename");
+            onClick={(e) => {
+              popUp.setIsPopUpOpen("rename");
               setIsDropdownOpen(false);
             }}
           >
