@@ -1,20 +1,22 @@
 import "../css-files/SideBar.css";
 import { useContext } from "react";
 import {v4 as uuidv4} from 'uuid';
-
+import { FolderDataContext } from "../Context/folderContext";
+import { PopUpContext } from "../Context/popUpContext";
 import ModelPopup from "./ModelPopup";
-import { folderItemsContext } from "./Home";
-import { popUpContext } from "./Home";
+// import { folderItemsContext } from "./Home";
+// import { popUpContext } from "./Home";
 export default function SideBar() {
-  const folder = useContext(folderItemsContext);
-  const popUp = useContext(popUpContext);
+  // const folder = useContext(FolderDataContext);
+  // const popUp = useContext(PopUpContext);
+   const {folderItems,setFolderItems,isPopUpOpen,setIsPopUpOpen} = useContext(PopUpContext)
 
   const handleCreate = (newName) => {
-    folder.setFolderItems([
-      ...folder.folderItems,
+    setFolderItems([
+      ...folderItems,
       { id: uuidv4(), name: newName },
     ]);
-    popUp.setIsPopUpOpen(null);
+    setIsPopUpOpen(null);
   };
 
   return (
@@ -28,13 +30,13 @@ export default function SideBar() {
         <button
           className="New-button-design"
           onClick={() => {
-            popUp.setIsPopUpOpen("create");
+            setIsPopUpOpen("create");
           }}
         >
           + New
         </button>
 
-        {popUp.isPopUpOpen == "create" && (
+        {isPopUpOpen == "create" && (
           <ModelPopup
             handleButtonAction={handleCreate}
             header="create folder"
