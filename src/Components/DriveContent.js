@@ -1,20 +1,16 @@
 import { useContext } from "react";
 import "../css-files/Content.css";
 import Folder from "./Folder";
-import { folderItemsContext } from "./Home";
-
-export default function DriveContent({}) {
-  const folder = useContext(folderItemsContext);
+import { PopUpContext } from "../Context/popUpContext";
+export default function DriveContent() {
+  const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
+    useContext(PopUpContext);
   return (
     <>
       <div className="content-container">
-        <div className="folders-container">
-          {folder.folderItems.map((val,index) => {
-            return (
-                <Folder key={index} val={val} />
-            );
-          })}
-        </div>
+        {folderItems.map((val, index) => {
+          return <Folder key={index} val={val} />;
+        })}
       </div>
     </>
   );
