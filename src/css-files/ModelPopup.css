@@ -8,16 +8,21 @@
   padding: 30px;
   border: 1px solid grey;
   background-color: ghostwhite;
-  border-radius: 5px;
-  box-shadow: 0 8px 16px 0 grey;
-  /* background-color: lightsteelblue; */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px 0 grey;
+  font-size: 15px;
+  color:dodgerblue;
+}
+.folder-card:hover {
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
 .folder-input {
   margin-top: 20px;
   padding: 15px;
   width: 18vw;
-  border: 2px solid blue;
+  border: 2px solid skyblue;
+  border-radius: 20px;
 }
 .folder-buttons-container {
   text-align: end;
@@ -29,7 +34,7 @@
   font-size: 17px;
   border: none;
   background: transparent;
-  color: blue;
+  color: dodgerblue;
 }
 .create-button {
   margin-right: 10px;
@@ -37,5 +42,5 @@
   font-size: 17px;
   border: none;
   background: transparent;
-  color: blue;
+  color: dodgerblue;
 }
