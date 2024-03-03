@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "../css-files/ModelDropdown.css";
-// import { popUpContext } from "./Home";
 import { PopUpContext } from "../Context/popUpContext";
 function ModelDropdown({
   folderId,
@@ -8,8 +7,8 @@ function ModelDropdown({
   buttonTitle,
   handleDelete,
 }) {
-  // console.log("folder id isfhgn b " ,folderId);
-  const {folderItems,setFolderItems,isPopUpOpen,setIsPopUpOpen} = useContext(PopUpContext);
+  const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
+    useContext(PopUpContext);
   return (
     <div className="drop1-container">
       <ul className="unordered-list-style">
