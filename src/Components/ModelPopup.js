@@ -1,6 +1,9 @@
 import { useContext, useState } from "react";
 import "../css-files/ModelPopup.css";
-import { popUpContext } from "./Home";
+// import { popUpContext } from "./Home";
+import { PopUpContext } from "../Context/popUpContext";
+
+
 export default function ModelPopup({
   handleButtonAction,
   header,
@@ -8,8 +11,8 @@ export default function ModelPopup({
   folderId=null,
   name=null,
 }) {
-  // console.log("br fvb urnrvn",folderId,name);
-  const popUp = useContext(popUpContext);
+   console.log("br fvb urnrvn name folder  ",folderId,name);
+  const {folderItems,setFolderItems,isPopUpOpen,setIsPopUpOpen} = useContext(PopUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
       <div className="folder-card">
@@ -26,7 +29,7 @@ export default function ModelPopup({
           <button
             className="cancel-button"
             onClick={() => {
-              popUp.setIsPopUpOpen(null);
+              setIsPopUpOpen(null);
             }}
           >
             Cancel
@@ -35,7 +38,7 @@ export default function ModelPopup({
           <button
             className="create-button"
             onClick={() => {
-              console.log("folder info",folderId, folderName)
+              // console.log("folder info",folderId, folderName)
               folderId
                 ? handleButtonAction(folderId, folderName)
                 : handleButtonAction(folderName);
@@ -45,5 +48,6 @@ export default function ModelPopup({
           </button>
         </div>
       </div>
-  );
+      
+  )
 }
