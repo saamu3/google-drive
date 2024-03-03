@@ -2,20 +2,14 @@ import {
   faEllipsisVertical,
   faFolder,
 } from "@fortawesome/free-solid-svg-icons";
-import { v4 as uuidv4 } from "uuid";
-import React from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ModelDropdown from "./ModelDropdown";
 import ModelPopup from "./ModelPopup";
-
-// import { folderItemsContext } from "./Home";
-import { FolderDataContext } from "../Context/folderContext";
 import { PopUpContext } from "../Context/popUpContext";
-// import { popUpContext } from "./Home";
-const Folder = React.memo(({ val }) => {
+
+const Folder = ({ val }) => {
   const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
     useContext(PopUpContext);
 
@@ -49,9 +43,6 @@ const Folder = React.memo(({ val }) => {
     localStorage.setItem("folderItems", JSON.stringify(folderItems));
   }, [folderItems]);
 
-  // console.log("popup", folderId)
-
-  //  console.log("folder id ",folderId)
   return (
     <div className="folder-div">
       <FontAwesomeIcon
@@ -96,9 +87,5 @@ const Folder = React.memo(({ val }) => {
       )}
     </div>
   );
-});
-// export default function Folder({ val }) {
-//   // const folder = useContext(FolderDataContext);
-
-// }
+};
 export default Folder;
