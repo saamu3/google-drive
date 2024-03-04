@@ -28,6 +28,11 @@
   width: 5vw;
   color: goldenrod;
 }
+.ellipsis-icon{
+  margin-Left: 30px;
+  font-Size:20px;
+  color:blue 
+}
 .drop1-container {
   position: absolute;
   display: flex;
