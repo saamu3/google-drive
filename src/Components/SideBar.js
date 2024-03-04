@@ -1,7 +1,6 @@
 import "../css-files/SideBar.css";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { FolderDataContext } from "../Context/folderContext";
 import { PopUpContext } from "../Context/popUpContext";
 import ModelPopup from "./ModelPopup";
 
