@@ -5,23 +5,26 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useTogglePopUp from "../CustomHook/useTogglePopUp";
+import { FolderItemsContext } from "./Home";
 import ModelDropdown from "./ModelDropdown";
 import ModelPopup from "./ModelPopup";
-import { PopUpContext } from "../Context/popUpContext";
 
 const Folder = ({ val }) => {
-  const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
-    useContext(PopUpContext);
+  const [isPopUpOpen, togglePopUp]= useTogglePopUp()
+
+  const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState({ id: val.id, name: val.name });
+  const [folderId, setFolderId] = useState({ id: null, name: null });
+
 
   const handleRename = (val, newName) => {
     console.log("folder id and name", folderId.id, folderId.name);
     const updatedList = folderItems.map((item) => {
-      if (item.id == val)
+      if (item.id === val)
         return {
           id: item.id,
           name: newName,
@@ -31,11 +34,12 @@ const Folder = ({ val }) => {
 
     console.log("updates lists", updatedList);
     setFolderItems(updatedList);
-    setIsPopUpOpen(null);
+    // setIsPopUpOpen(null);
+    togglePopUp(false)
   };
 
   const handleDelete = (val) => {
-    const update = folderItems.filter((item) => item.id != val);
+    const update = folderItems.filter((item) => item.id !== val);
     setFolderItems(update);
   };
 
@@ -64,20 +68,28 @@ const Folder = ({ val }) => {
       />
       {isDropdownOpen && (
         <ModelDropdown
-          folderId={folderId.id}
-          setIsDropdownOpen={setIsDropdownOpen}
+          handleRenameHandler={() => {
+            togglePopUp(true);
+            setIsDropdownOpen(false);
+          }}
+          handleDeleteHandler={() => {
+            handleDelete(folderId.id);
+            setIsDropdownOpen(false);
+          }}
           buttonTitle={["Rename Folder", "Delete Folder"]}
-          handleDelete={handleDelete}
         />
       )}
 
-      {isPopUpOpen == "rename" && (
+      {isPopUpOpen && (
         <ModelPopup
           handleButtonAction={handleRename}
           header="Rename Folder"
           buttonTitle="rename"
           folderId={folderId.id}
           name={folderId.name}
+          handleClose={()=>{
+            togglePopUp(false)
+          }}
         />
       )}
     </div>
