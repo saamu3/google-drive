@@ -1,16 +1,17 @@
 import "../css-files/SideBar.css";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { PopUpContext } from "../Context/popUpContext";
 import ModelPopup from "./ModelPopup";
+import useTogglePopUp from "../CustomHook/useTogglePopUp";
+import { FolderItemsContext } from "./Home";
 
 export default function SideBar() {
-  const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
-    useContext(PopUpContext);
+  const [isPopUpOpen, togglePopUp] = useTogglePopUp();
+  const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
   const handleCreate = (newName) => {
     setFolderItems([...folderItems, { id: uuidv4(), name: newName }]);
-    setIsPopUpOpen(null);
+    togglePopUp(false);
   };
 
   return (
@@ -21,20 +22,18 @@ export default function SideBar() {
           <p className="para-element">Drive</p>
         </div>
 
-        <button
-          className="New-button-design"
-          onClick={() => {
-            setIsPopUpOpen("create");
-          }}
-        >
+        <button className="New-button-design" onClick={() => togglePopUp(true)}>
           + New
         </button>
 
-        {isPopUpOpen == "create" && (
+        {isPopUpOpen && (
           <ModelPopup
             handleButtonAction={handleCreate}
             header="create folder"
             buttonTitle="Create"
+            handleClose={() => {
+              togglePopUp(false);
+            }}
           />
         )}
       </div>
