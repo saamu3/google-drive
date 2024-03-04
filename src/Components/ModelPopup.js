@@ -1,16 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "../css-files/ModelPopup.css";
-import { PopUpContext } from "../Context/popUpContext";
-
 export default function ModelPopup({
   handleButtonAction,
   header,
   buttonTitle,
   folderId = null,
   name = null,
+  handleClose,
 }) {
-  const { folderItems, setFolderItems, isPopUpOpen, setIsPopUpOpen } =
-    useContext(PopUpContext);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
     <div className="folder-card">
@@ -24,12 +21,7 @@ export default function ModelPopup({
         defaultValue={folderId ? name : folderName}
       />
       <div className="folder-buttons-container">
-        <button
-          className="cancel-button"
-          onClick={() => {
-            setIsPopUpOpen(null);
-          }}
-        >
+        <button className="cancel-button" onClick={handleClose}>
           Cancel
         </button>
 
