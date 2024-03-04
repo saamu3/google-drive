@@ -56,15 +56,10 @@ const Folder = ({ val }) => {
       <FontAwesomeIcon
         id={val.id}
         onClick={() => {
-          console.log(
-            "Three dots clicked id and name ",
-            folderId.id,
-            folderId.name
-          );
           setIsDropdownOpen(true);
           setFolderId({ id: val.id, name: val.name });
         }}
-        style={{ margingLeft: "30px", backgroundColor: "red" }}
+        className="ellipsis-icon"
         icon={faEllipsisVertical}
       />
       {isDropdownOpen && (
