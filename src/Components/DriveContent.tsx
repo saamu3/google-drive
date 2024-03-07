@@ -1,15 +1,13 @@
 import { useContext } from "react";
-import React from "react";
 import "../css-files/Content.css";
-import Folder from "./Folder.tsx";
-import { FolderItemsContext, contextType } from "./Home.tsx";
+import Folder from "./Folder";
+import { FolderItemsContext, TContext} from "./Home";
 export default function DriveContent() {
-  const { folderItems } = useContext<contextType | null>(FolderItemsContext);
+  const { folderItems } = useContext<TContext>(FolderItemsContext);
   return (
     <div className="content-container">
-      {folderItems.map((val) => {
-        console.log("id", val.id);
-        return <Folder key={val.id} val={val} />;
+      {folderItems.map((val, index) => {
+        return <Folder key={index} val={val} />;
       })}
     </div>
   );
