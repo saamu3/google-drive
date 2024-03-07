@@ -3,8 +3,8 @@ import React from "react";
 import "../css-files/FolderContent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
-import fileData from "../StaticData/FilesData.js";
-import FolderData from "../StaticData/FolderData.tsx";
+import fileData from "../StaticData/FilesData";
+import FolderData from "../StaticData/FolderData";
 import { useParams } from "react-router-dom";
 
 export default function FolderContent() {
@@ -16,7 +16,7 @@ export default function FolderContent() {
 
   const { id } = useParams();
 
-  function handleFileCreate(newName) {
+  function handleFileCreate(newName: string) {
     setFileItem([
       ...fileItem,
       {
@@ -40,7 +40,7 @@ export default function FolderContent() {
       </div>
       <div className="content-container">
         <div className="folders-container">
-          {fileItem.map((val) => {
+          {fileItem.map((val:any) => {
             if (val.folder_id == id) {
               return (
                 <div className="file-container">
