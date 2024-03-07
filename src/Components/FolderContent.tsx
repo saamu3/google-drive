@@ -1,11 +1,10 @@
-import { useState } from "react";
-import React from "react";
-import "../css-files/FolderContent.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import fileData from "../StaticData/FilesData";
 import FolderData from "../StaticData/FolderData";
-import { useParams } from "react-router-dom";
+import "../css-files/FolderContent.css";
 
 export default function FolderContent() {
   const [fileItem, setFileItem] = useState(

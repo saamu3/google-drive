@@ -16,7 +16,7 @@ export default function ModelPopup({
   folderId,
   name,
   handleClose,
-}:  TModelPopProp) {
+}: TModelPopProp) {
   console.log("folder id", folderId);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
