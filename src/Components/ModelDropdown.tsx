@@ -25,7 +25,7 @@ function ModelDropdown({
         <hr className="horizontal-line-style" />
         <li className="list1-style">
           <button
-            onClick={() => handleDeleteHandler()}
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleDeleteHandler()}
             className="newfolder-style"
           >
             {buttonTitle[1]}

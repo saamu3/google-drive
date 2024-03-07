@@ -15,7 +15,7 @@ type TfolderId = {
   name: string;
 };
 
-const Folder = ({val}:any) => {
+const Folder = ({val}:{val:TfolderId}) => {
   const { isPopUpOpen, togglePopUp } = useTogglePopUp();
 
   const { folderItems, setFolderItems } = useContext(FolderItemsContext);
@@ -23,7 +23,7 @@ const Folder = ({val}:any) => {
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState<TfolderId>({ id: "", name: "" });
+  const [folderId, setFolderId] = useState<TfolderId>({} as TfolderId);
 
   const handleRename = (val: string, newName: string) => {
     const updatedList = folderItems.map((item) => {
