@@ -7,6 +7,6 @@ function useTogglePopUp() {
     setIsPopUpOpen(!isPopUpOpen);
   };
 
-  return { isPopUpOpen, togglePopUp };
+  return [ isPopUpOpen, togglePopUp ] as const;
 }
 export default useTogglePopUp;
