@@ -1,11 +1,12 @@
-import { Items } from "../Components/Home";
-const FolderData:Items = [
+import { TFolderItems } from "../Components/Home";
+import { v4 as uuidv4 } from "uuid";
+const FolderData:TFolderItems[] = [
   {
-    id: 1,
+    id: uuidv4(),
     name: "soumya",
   },
   {
-    id: 2,
+    id: uuidv4(),
     name: "sakshi",
   },
 ];
