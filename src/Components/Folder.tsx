@@ -16,7 +16,7 @@ type TfolderId = {
 };
 
 const Folder = ({val}:{val:TfolderId}) => {
-  const { isPopUpOpen, togglePopUp } = useTogglePopUp();
+  const [isPopUpOpen, togglePopUp ] = useTogglePopUp();
 
   const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
