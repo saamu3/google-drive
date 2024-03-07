@@ -1,0 +1,54 @@
+.content-container {
+  display: grid;
+  grid: 120px / auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto auto;
+  width: 80vw;
+  height: 100vh;
+  color: black;
+  margin-left: 20px;
+  border-radius: 10px;
+  padding-left: 50px;
+  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+.folder-div {
+  position: relative;
+  display: grid;
+  grid: 120px / auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  font-size: 10px;
+  height: 3vh;
+  width: 20vw;
+  margin-top: 10px;
+}
+.folder-icon {
+  height: 5vh;
+  width: 5vw;
+  color: goldenrod;
+}
+.ellipsis-icon{
+  margin-Left: 30px;
+  font-Size:20px;
+  color:blue 
+}
+.drop1-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  width: 10vw;
+  position: absolute;
+  top: 30vh;
+  left: 40vw;
+  border: 1px solid grey;
+  background-color: ghostwhite;
+  padding: 10px;
+  box-shadow: 0 8px 16px 0 grey;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+  border-radius: 5px;
+}

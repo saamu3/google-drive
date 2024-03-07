@@ -1,0 +1,45 @@
+.drop1-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  width: 12vw;
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  border: 1px solid grey;
+  background-color: ghostwhite;
+  padding: 10px;
+  box-shadow: 0 8px 16px 0 grey;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.drop1-container:hover {
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+.unordered-list-style {
+  display: flex;
+  flex-direction: column;
+}
+.list-style {
+  margin-bottom: 10px;
+  margin-left: 30px;
+  list-style-type: none;
+}
+.newfolder-style {
+  border: none;
+  font-size: 20px;
+  background: transparent;
+}
+.horizontal-line-style {
+  width: 11vw;
+  left: 10px;
+}
+.list1-style {
+  margin-top: 10px;
+  margin-left: 40px;
+  list-style-type: none;
+}
