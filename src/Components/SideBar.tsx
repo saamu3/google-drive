@@ -1,18 +1,17 @@
 import "../css-files/SideBar.css";
-import { useContext } from "react";
+import react from "react";
 import { v4 as uuidv4 } from "uuid";
-import React from "react";
-import ModelPopup from "./ModelPopup.tsx";
-import useTogglePopUp from "../CustomHook/useTogglePopUp.tsx";
-import { FolderItemsContext } from "./Home.tsx";
-import { contextType } from "./Home.tsx";
+import ModelPopup from "./ModelPopup";
+import useTogglePopUp from "../CustomHook/useTogglePopUp";
+import { FolderItemsContext } from "./Home";
+import { TContext} from "./Home";
 
 export default function SideBar() {
-  const [isPopUpOpen, togglePopUp] = useTogglePopUp();
+  const { isPopUpOpen, togglePopUp } = useTogglePopUp();
   const { folderItems, setFolderItems } =
-    useContext<contextType>(FolderItemsContext);
+    react.useContext<TContext>(FolderItemsContext);
 
-  const handleCreate = (newName: String) => {
+  const handleCreate = (newName: string) => {
     setFolderItems([...folderItems, { id: uuidv4(), name: newName }]);
     togglePopUp(false);
   };
@@ -34,8 +33,10 @@ export default function SideBar() {
             handleButtonAction={handleCreate}
             header="create folder"
             buttonTitle="Create"
+            folderId={""}
+            name={""}
             handleClose={() => {
-              togglePopUp(false);
+              togglePopUp(true);
             }}
           />
         )}
