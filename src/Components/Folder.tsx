@@ -2,37 +2,31 @@ import {
   faEllipsisVertical,
   faFolder,
 } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useTogglePopUp from "../CustomHook/useTogglePopUp.tsx";
-import { FolderItemsContext, contextType } from "./Home.tsx";
-import ModelDropdown from "./ModelDropdown.tsx";
-import ModelPopup from "./ModelPopup.tsx";
+import useTogglePopUp from "../CustomHook/useTogglePopUp";
+import { FolderItemsContext } from "./Home";
+import ModelDropdown from "./ModelDropdown";
+import ModelPopup from "./ModelPopup";
 
-interface folderType {
-  id: number | null;
-  name: String | null;
-}
+type TfolderId = {
+  id: string;
+  name: string;
+};
 
-const Folder = ({ val }) => {
-  const [isPopUpOpen, togglePopUp] = useTogglePopUp();
+const Folder = ({val}:any) => {
+  const { isPopUpOpen, togglePopUp } = useTogglePopUp();
 
-  const { folderItems, setFolderItems } =
-    useContext<contextType>(FolderItemsContext);
+  const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState<folderType>({
-    id: null,
-    name: null,
-  });
+  const [folderId, setFolderId] = useState<TfolderId>({ id: "", name: "" });
 
-  const handleRename = (val: number, newName: String) => {
-    console.log("folder id and name", folderId.id, folderId.name);
-    const updatedList = folderItems.map((item: folderType) => {
+  const handleRename = (val: string, newName: string) => {
+    const updatedList = folderItems.map((item) => {
       if (item.id === val)
         return {
           id: item.id,
@@ -46,8 +40,8 @@ const Folder = ({ val }) => {
     togglePopUp(false);
   };
 
-  const handleDelete = (val: number | null) => {
-    const update = folderItems.filter((item: folderType) => item.id !== val);
+  const handleDelete = (val: string) => {
+    const update = folderItems.filter((item) => item.id != val);
     setFolderItems(update);
   };
 
@@ -81,7 +75,7 @@ const Folder = ({ val }) => {
             setIsDropdownOpen(false);
           }}
           handleDeleteHandler={() => {
-            handleDelete(folderId.id);
+            folderId && handleDelete(folderId.id);
             setIsDropdownOpen(false);
           }}
           buttonTitle={["Rename Folder", "Delete Folder"]}
@@ -95,7 +89,7 @@ const Folder = ({ val }) => {
           buttonTitle="rename"
           folderId={folderId.id}
           name={folderId.name}
-          handleClose={togglePopUp(false)}
+          handleClose={() => togglePopUp(false)}
         />
       )}
     </div>
