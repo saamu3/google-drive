@@ -4,22 +4,23 @@ import "../css-files/Home.css";
 import DriveContent from "./DriveContent";
 import SideBar from "./SideBar";
 import React from "react";
-
-export type Items = {
-  id: number;
+export type TFolderItems = {
+  id: string;
   name: string;
-}[];
-
-export type contextType = {
-  folderItems: Items[] | null;
-  setFolderItems: React.Dispatch<React.SetStateAction<Items[]>>;
 };
 
-export const FolderItemsContext = createContext<contextType | null>(null);
+export type TContext = {
+  folderItems: TFolderItems[];
+  setFolderItems: React.Dispatch<React.SetStateAction<TFolderItems[]>>;
+};
+export const FolderItemsContext = createContext<TContext>({
+  folderItems: FolderData,
+  setFolderItems: () => {},
+});
 export default function Home() {
-  const folders:Items[]=
+  const folders: TFolderItems[] =
     JSON.parse(localStorage.getItem("folderItems") || "") || FolderData;
-  const [folderItems, setFolderItems] = useState<Items[]>(folders);
+  const [folderItems, setFolderItems] = useState<TFolderItems[]>(folders);
   return (
     <FolderItemsContext.Provider value={{ folderItems, setFolderItems }}>
       <div className="main-container">
