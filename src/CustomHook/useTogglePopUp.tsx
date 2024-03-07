@@ -1,12 +1,12 @@
-import { useState} from "react";
-import React from "react";
- function useTogglePopUp():any{
-  const [isPopUpOpen, setIsPopUpOpen] = useState<Boolean>(false);
+import { useState } from "react";
 
-  function togglePopUp(){
+function useTogglePopUp() {
+  const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
+
+  const togglePopUp = (value: boolean) => {
     setIsPopUpOpen(!isPopUpOpen);
-  }
+  };
 
-  return [isPopUpOpen,togglePopUp] ;
+  return { isPopUpOpen, togglePopUp };
 }
 export default useTogglePopUp;
