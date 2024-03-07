@@ -1,23 +1,23 @@
 import { useState } from "react";
-import React from "react";
 import "../css-files/ModelPopup.css";
 
-interface  ModelPopProp {
-  handleButtonAction: void;
-  header: String;
-  buttonTitle: String;
-  folderId: number | null;
-  name: String | null;
-  handleClose: void;
-}
+type TModelPopProp = {
+  handleButtonAction: (folderId: string, newName: string) => void;
+  header: string;
+  buttonTitle: string;
+  folderId: string;
+  name: string;
+  handleClose: () => void;
+};
 export default function ModelPopup({
   handleButtonAction,
   header,
   buttonTitle,
-  folderId = null,
-  name = null,
+  folderId,
+  name,
   handleClose,
-}) {
+}:  TModelPopProp) {
+  console.log("folder id", folderId);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
     <div className="folder-card">
@@ -40,7 +40,7 @@ export default function ModelPopup({
           onClick={() => {
             folderId
               ? handleButtonAction(folderId, folderName)
-              : handleButtonAction(folderName);
+              : handleButtonAction(folderName, folderId);
           }}
         >
           {buttonTitle}
