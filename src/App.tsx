@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Components/Home.tsx";
-import FolderContent from "./Components/FolderContent.tsx";
-import React from 'react';
+import Home from "./Components/Home";
+import FolderContent from "./Components/FolderContent";
 
 function App() {
   return (
