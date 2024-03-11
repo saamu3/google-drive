@@ -19,9 +19,9 @@ I have rendered the Home component in the main App component,in that I have used
 
 8> when I click the specific folder ,then it will navigate into another page,for this I have created folderContent component,so when I click the folder then it will navigate into different routes but renders the same component with different files,I have used useParams hook to get the id from the Route,so by comparing the route id with  the folderid of file,if it matches,then specific file will be displayed inside the folder.
 
-8>here,I have also used the localstorage to store the folderItems and fileItems,what I meant to say is when I refresh the page,the folder which I have created will be on the page only,they won't be removed,even after applying delete,rename functionalities,here I have used useEffect hook for storing items in localstorage by keeping dependencies as folder,folders will be stored whenever folders state get updated using setState function.
+9>here,I have also used the localstorage to store the folderItems and fileItems,what I meant to say is when I refresh the page,the folder which I have created will be on the page only,they won't be removed,even after applying delete,rename functionalities,here I have used useEffect hook for storing items in localstorage by keeping dependencies as folder,folders will be stored whenever folders state get updated using setState function.
 
-9> I have created one css file for one component,I kept all css files inside css-files folder,and all components inside the components folder.
+10> I have created one css file for one component,I kept all css files inside css-files folder,and all components inside the components folder.
 ```
 
 
