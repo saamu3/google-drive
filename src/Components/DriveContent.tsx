@@ -6,8 +6,8 @@ export default function DriveContent() {
   const { folderItems } = useContext<TContext>(FolderItemsContext);
   return (
     <div className="content-container">
-      {folderItems.map((val, index) => {
-        return <Folder key={index} val={val} />;
+      {folderItems.map((folder, index) => {
+        return <Folder key={index} folder={folder} />;
       })}
     </div>
   );
