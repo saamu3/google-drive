@@ -1,6 +1,6 @@
 import {
-  faEllipsisVertical,
-  faFolder,
+  faEllipsisVertical as ellipsisIcon,
+  faFolder as folderIcon,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
@@ -10,24 +10,24 @@ import { FolderItemsContext } from "./Home";
 import ModelDropdown from "./ModelDropdown";
 import ModelPopup from "./ModelPopup";
 
-type TfolderId = {
+type TFolderId = {
   id: string;
   name: string;
 };
 
-const Folder = ({val}:{val:TfolderId}) => {
-  const [isPopUpOpen, togglePopUp ] = useTogglePopUp();
+const Folder = ({ folder }: { folder: TFolderId }) => {
+  const [isPopUpOpen, togglePopUp] = useTogglePopUp();
 
   const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
   const navigate = useNavigate();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [folderId, setFolderId] = useState<TfolderId>({} as TfolderId);
+  const [folderId, setFolderId] = useState<TFolderId>({ id: "", name: "" });
 
-  const handleRename = (val: string, newName: string) => {
+  const handleRename = (newName: string, id?: string): void => {
     const updatedList = folderItems.map((item) => {
-      if (item.id === val)
+      if (item.id === id)
         return {
           id: item.id,
           name: newName,
@@ -35,13 +35,12 @@ const Folder = ({val}:{val:TfolderId}) => {
       return item;
     });
 
-    console.log("updates lists", updatedList);
     setFolderItems(updatedList);
-    togglePopUp(false);
+    togglePopUp(true);
   };
 
-  const handleDelete = (val: string) => {
-    const update = folderItems.filter((item) => item.id != val);
+  const handleDelete = (id: string): void => {
+    const update = folderItems.filter((item) => item.id !== id);
     setFolderItems(update);
   };
 
@@ -53,25 +52,25 @@ const Folder = ({val}:{val:TfolderId}) => {
     <div className="folder-div">
       <FontAwesomeIcon
         className="folder-icon"
-        icon={faFolder}
+        icon={folderIcon}
         onClick={() => {
-          navigate(`/folderContent/${val.id}`);
+          navigate(`/folderContent/${folder.id}`);
         }}
       />
-      <h1>{val.name}</h1>
+      <h1>{folder.name}</h1>
       <FontAwesomeIcon
-        id={val.id}
+        id={folder.id}
         onClick={() => {
           setIsDropdownOpen(true);
-          setFolderId({ id: val.id, name: val.name });
+          setFolderId({ id: folder.id, name: folder.name });
         }}
         className="ellipsis-icon"
-        icon={faEllipsisVertical}
+        icon={ellipsisIcon}
       />
       {isDropdownOpen && (
         <ModelDropdown
           handleRenameHandler={() => {
-            togglePopUp(true);
+            togglePopUp(false);
             setIsDropdownOpen(false);
           }}
           handleDeleteHandler={() => {
@@ -89,7 +88,7 @@ const Folder = ({val}:{val:TfolderId}) => {
           buttonTitle="rename"
           folderId={folderId.id}
           name={folderId.name}
-          handleClose={() => togglePopUp(false)}
+          handleClose={() => togglePopUp(true)}
         />
       )}
     </div>
