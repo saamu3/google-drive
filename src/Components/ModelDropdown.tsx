@@ -10,11 +10,11 @@ function ModelDropdown({
   buttonTitle,
 }: TModelDropdownProp) {
   return (
-    <div className="drop1-container">
-      <ul className="unordered-list-style">
-        <li className="list-style">
+    <div className="dropdown-container">
+      <ul className="unordered-list">
+        <li className="rename-button-container">
           <button
-            className="newfolder-style"
+            className="newfolder"
             onClick={() => {
               handleRenameHandler();
             }}
@@ -22,11 +22,13 @@ function ModelDropdown({
             {buttonTitle[0]}
           </button>
         </li>
-        <hr className="horizontal-line-style" />
-        <li className="list1-style">
+        <hr className="horizontal-line" />
+        <li className="delete-button-container">
           <button
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleDeleteHandler()}
-            className="newfolder-style"
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+              handleDeleteHandler()
+            }
+            className="newfolder"
           >
             {buttonTitle[1]}
           </button>
