@@ -1,4 +1,4 @@
-import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { faFile as fileIcon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -48,7 +48,7 @@ export default function FolderContent() {
             if (file.folder_id === id) {
               return (
                 <div className="file-container">
-                  <FontAwesomeIcon icon={faFile} className="file-icon" />
+                  <FontAwesomeIcon icon={fileIcon} className="file-icon" />
                   <h1 className="file-heading">{file.name}</h1>
                 </div>
               );
