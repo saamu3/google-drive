@@ -18,7 +18,7 @@ export default function FolderContent() {
 
   localStorage.setItem("fileItem", JSON.stringify(fileItems));
 
-  const { id } = useParams();
+  const { id } = useParams<string>();
 
   function handleFileCreate(newName: string): void {
     setFileItems([
