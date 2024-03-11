@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 reportWebVitals.js
-setupTests.js
 app.test.js
 
 # testing
