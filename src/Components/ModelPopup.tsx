@@ -2,11 +2,11 @@ import { useState } from "react";
 import "../css-files/ModelPopup.css";
 
 type TModelPopProp = {
-  handleButtonAction: (folderId: string, newName: string) => void;
+  handleButtonAction: ( newName: string,folderId?: string) => void;
   header: string;
   buttonTitle: string;
-  folderId: string;
-  name: string;
+  folderId?: string;
+  name?: string;
   handleClose: () => void;
 };
 export default function ModelPopup({
@@ -17,7 +17,6 @@ export default function ModelPopup({
   name,
   handleClose,
 }: TModelPopProp) {
-  console.log("folder id", folderId);
   const [folderName, setFolderName] = useState("Untitled folder");
   return (
     <div className="folder-card">
@@ -39,8 +38,8 @@ export default function ModelPopup({
           className="create-button"
           onClick={() => {
             folderId
-              ? handleButtonAction(folderId, folderName)
-              : handleButtonAction(folderName, folderId);
+              ? handleButtonAction(folderName,folderId)
+              : handleButtonAction(folderName,folderId);
           }}
         >
           {buttonTitle}
