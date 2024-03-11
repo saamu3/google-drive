@@ -1,4 +1,4 @@
-.drop1-container {
+.dropdown-container {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -20,25 +20,25 @@
 .drop1-container:hover {
   background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
-.unordered-list-style {
+.unordered-list{
   display: flex;
   flex-direction: column;
 }
-.list-style {
+.rename-button-container {
   margin-bottom: 10px;
   margin-left: 30px;
   list-style-type: none;
 }
-.newfolder-style {
+.newfolder {
   border: none;
   font-size: 20px;
   background: transparent;
 }
-.horizontal-line-style {
+.horizontal-line{
   width: 11vw;
   left: 10px;
 }
-.list1-style {
+.delete-button-container{
   margin-top: 10px;
   margin-left: 40px;
   list-style-type: none;
