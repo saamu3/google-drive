@@ -3,24 +3,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import fileData from "../StaticData/FilesData";
-import FolderData from "../StaticData/FolderData";
+import { v4 as uuidv4 } from "uuid";
 import "../css-files/FolderContent.css";
 
+export type TFile = {
+  file_id: number;
+  folder_id: string;
+  name: string;
+};
 export default function FolderContent() {
-  const [fileItem, setFileItem] = useState(
+  const [fileItems, setFileItems] = useState<TFile[]>(
     JSON.parse(localStorage.getItem("fileItem") || "") || fileData
   );
 
-  localStorage.setItem("fileItem", JSON.stringify(fileItem));
+  localStorage.setItem("fileItem", JSON.stringify(fileItems));
 
   const { id } = useParams();
 
-  function handleFileCreate(newName: string) {
-    setFileItem([
-      ...fileItem,
+  function handleFileCreate(newName: string): void {
+    setFileItems([
+      ...fileItems,
       {
-        file_id: fileItem.length + 1,
-        folder_id: FolderData.length + 1,
+        file_id: fileItems.length + 1,
+        folder_id: uuidv4(),
         name: newName,
       },
     ]);
@@ -29,7 +34,7 @@ export default function FolderContent() {
     <>
       <div>
         <button
-          className="New-button-design"
+          className="new-button-design"
           onClick={() => {
             handleFileCreate("soumy.txt");
           }}
@@ -39,14 +44,16 @@ export default function FolderContent() {
       </div>
       <div className="content-container">
         <div className="folders-container">
-          {fileItem.map((val:any) => {
-            if (val.folder_id == id) {
+          {fileItems.map((file) => {
+            if (file.folder_id === id) {
               return (
                 <div className="file-container">
                   <FontAwesomeIcon icon={faFile} className="file-icon" />
-                  <h1 className="file-heading">{val.name}</h1>
+                  <h1 className="file-heading">{file.name}</h1>
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>
