@@ -13,7 +13,10 @@ export type TContext = {
   folderItems: TFolderItems[];
   setFolderItems: React.Dispatch<React.SetStateAction<TFolderItems[]>>;
 };
-export const FolderItemsContext = createContext<TContext>({} as TContext );
+export const FolderItemsContext = createContext<TContext>({
+  folderItems: FolderData,
+  setFolderItems: () => {},
+});
 export default function Home() {
   const folders: TFolderItems[] =
     JSON.parse(localStorage.getItem("folderItems") || "") || FolderData;
