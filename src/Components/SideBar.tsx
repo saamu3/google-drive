@@ -4,16 +4,16 @@ import { v4 as uuidv4 } from "uuid";
 import ModelPopup from "./ModelPopup";
 import useTogglePopUp from "../CustomHook/useTogglePopUp";
 import { FolderItemsContext } from "./Home";
-import { TContext} from "./Home";
+import { TContext } from "./Home";
 
 export default function SideBar() {
-  const { isPopUpOpen, togglePopUp } = useTogglePopUp();
+  const [isPopUpOpen, togglePopUp] = useTogglePopUp();
   const { folderItems, setFolderItems } =
     react.useContext<TContext>(FolderItemsContext);
 
-  const handleCreate = (newName: string) => {
+  const handleCreate = (newName: string, id?: string): void => {
     setFolderItems([...folderItems, { id: uuidv4(), name: newName }]);
-    togglePopUp(false);
+    togglePopUp(true);
   };
 
   return (
@@ -24,7 +24,10 @@ export default function SideBar() {
           <p className="para-element">Drive</p>
         </div>
 
-        <button className="New-button-design" onClick={() => togglePopUp(true)}>
+        <button
+          className="new-button-design"
+          onClick={() => togglePopUp(false)}
+        >
           + New
         </button>
 
@@ -33,8 +36,6 @@ export default function SideBar() {
             handleButtonAction={handleCreate}
             header="create folder"
             buttonTitle="Create"
-            folderId={""}
-            name={""}
             handleClose={() => {
               togglePopUp(true);
             }}
