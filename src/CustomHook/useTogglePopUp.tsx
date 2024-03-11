@@ -4,7 +4,7 @@ function useTogglePopUp() {
   const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
 
   const togglePopUp = (value: boolean) => {
-    setIsPopUpOpen(!isPopUpOpen);
+    setIsPopUpOpen(!value);
   };
 
   return [ isPopUpOpen, togglePopUp ] as const;
