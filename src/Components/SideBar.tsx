@@ -1,15 +1,13 @@
 import "../css-files/SideBar.css";
-import react from "react";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ModelPopup from "./ModelPopup";
 import useTogglePopUp from "../CustomHook/useTogglePopUp";
-import { FolderItemsContext } from "./Home";
-import { TContext } from "./Home";
+import { FolderItemsContext } from "../context/FolderItems";
 
 export default function SideBar() {
   const [isPopUpOpen, togglePopUp] = useTogglePopUp();
-  const { folderItems, setFolderItems } =
-    react.useContext<TContext>(FolderItemsContext);
+  const { folderItems, setFolderItems } = useContext(FolderItemsContext);
 
   const handleCreate = (newName: string, id?: string): void => {
     setFolderItems([...folderItems, { id: uuidv4(), name: newName }]);
