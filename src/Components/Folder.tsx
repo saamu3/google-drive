@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import {
   faEllipsisVertical as ellipsisIcon,
   faFolder as folderIcon,
@@ -6,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useTogglePopUp from "../CustomHook/useTogglePopUp";
-import { FolderItemsContext } from "./Home";
 import ModelDropdown from "./ModelDropdown";
 import ModelPopup from "./ModelPopup";
+import { FolderItemsContext } from "../context/FolderItems";
 
 type TFolderId = {
   id: string;
@@ -51,14 +52,17 @@ const Folder = ({ folder }: { folder: TFolderId }) => {
   return (
     <div className="folder-div">
       <FontAwesomeIcon
+        data-testid="folder1"
+        id={folder.id + 1}
+        onClick={() => {
+           navigate(`/folderContent/${folder.id}`);
+        }}
         className="folder-icon"
         icon={folderIcon}
-        onClick={() => {
-          navigate(`/folderContent/${folder.id}`);
-        }}
       />
       <h1>{folder.name}</h1>
       <FontAwesomeIcon
+        data-testid="ellipsis"
         id={folder.id}
         onClick={() => {
           setIsDropdownOpen(true);
