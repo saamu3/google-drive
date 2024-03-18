@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css-files/ModelPopup.css";
 
 type TModelPopProp = {
-  handleButtonAction: ( newName: string,folderId?: string) => void;
+  handleButtonAction: (newName: string, folderId?: string) => void;
   header: string;
   buttonTitle: string;
   folderId?: string;
@@ -30,16 +30,20 @@ export default function ModelPopup({
         defaultValue={folderId ? name : folderName}
       />
       <div className="folder-buttons-container">
-        <button className="cancel-button" onClick={handleClose}>
+        <button
+          className="cancel-button"
+          data-testid="Cancel"
+          onClick={handleClose}
+        >
           Cancel
         </button>
-
         <button
           className="create-button"
+          data-testid="rename"
           onClick={() => {
             folderId
-              ? handleButtonAction(folderName,folderId)
-              : handleButtonAction(folderName,folderId);
+              ? handleButtonAction(folderName, folderId)
+              : handleButtonAction(folderName, folderId);
           }}
         >
           {buttonTitle}
