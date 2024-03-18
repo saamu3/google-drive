@@ -18,6 +18,7 @@ function ModelDropdown({
             onClick={() => {
               handleRenameHandler();
             }}
+            data-testid="rename"
           >
             {buttonTitle[0]}
           </button>
