@@ -13,7 +13,7 @@ export type TFile = {
 };
 export default function FolderContent() {
   const [fileItems, setFileItems] = useState<TFile[]>(
-    JSON.parse(localStorage.getItem("fileItem") || "") || fileData
+    JSON.parse(localStorage.getItem("fileItem")!) || fileData
   );
 
   localStorage.setItem("fileItem", JSON.stringify(fileItems));
@@ -47,8 +47,8 @@ export default function FolderContent() {
           {fileItems.map((file) => {
             if (file.folder_id === id) {
               return (
-                <div className="file-container">
-                  <FontAwesomeIcon icon={fileIcon} className="file-icon" />
+                <div className="file-container" data-textid="file">
+                  <FontAwesomeIcon icon={fileIcon} className="file-icon"/>
                   <h1 className="file-heading">{file.name}</h1>
                 </div>
               );
@@ -58,6 +58,6 @@ export default function FolderContent() {
           })}
         </div>
       </div>
-    </>
+      </>
   );
-}
+  }
